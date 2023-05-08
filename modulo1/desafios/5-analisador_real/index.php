@@ -13,39 +13,41 @@
         <div class="content-box">
             <h1>Analisador de números reais</h1>
             <h2>Digite um número para saber se ele é real ou não</h2>
-            
-            <?php 
-                $number = $_POST["number"]; 
+
+            <?php
+                $number = $_POST["number"];
                 $button = $_POST ["button"];
             ?>
-            
+
             <form action="<?=$server["PHP_SELF"]?>" method="post">
                 <input type="text" name="number" value="<?=$number?>" step="0.001">
                 <br>
-                <input type="submit" name="button" value="Enviar">
+                <input type="submit" name="button" value="Continuar">
             </form>
 
-            <?php 
+            <?php
                 $number = (double) $number;
-                if (isset($button)) 
-                {            
-                    if ($number == null or $number == is_string($number)) 
+                if (isset($button))
+                {
+                    if ($number == null or $number == is_string($number))
                     {
-                        echo "<h2>Por favor, digite um número.</h2>";  
+                        echo "<h2>Por favor, digite um número.</h2>";
                     }
                     else
                     {
                         $integer = (int) $number;
                         $fractional = $number - $integer;
-                        echo "<h2><ul><li> O número é ". number_format($number, 3, ",", ".") ."</li>";
+                        echo "<h2><ul>";
+                        echo "<li> O número é ". number_format($number, 3, ",", ".") ."</li>";
                         echo "<li> A parte inteira é ". number_format($integer, 0, ",", ".") ."</li>";
-                        echo "<li> A parte fracionária é ". number_format($fractional, 3, ",", ".") ."</li></ul></h2>";
+                        echo "<li> A parte fracionária é ". number_format($fractional, 3, ",", ".") ."</li>";
+                        echo "</h2></ul>";
                     }
                 }
             ?>
         </div>
     </div>
- 
-    
+
+
 </body>
 </html>
